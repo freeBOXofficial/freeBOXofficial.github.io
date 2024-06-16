@@ -31,7 +31,7 @@ main {
     padding: 20px;
 }
 
-section.claim-details {
+section.offer-details {
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -41,9 +41,53 @@ section.claim-details {
     margin: 0 auto;
 }
 
-section.claim-details h2 {
+section.offer-details h2 {
     color: #4CAF50;
     margin-bottom: 10px;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+ol {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 
 footer {
