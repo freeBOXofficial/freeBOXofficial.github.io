@@ -43,7 +43,7 @@ section {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.how-it-works h2, .get-started h2 {
+section h2 {
     color: #4CAF50;
     margin-bottom: 10px;
 }
