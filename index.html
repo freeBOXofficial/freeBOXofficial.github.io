@@ -1,38 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>freeBUX - Get Your roBUCKS</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>roBUCKS Generator</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-cC5zP0odPEs8rpbJ0hUM7L2/z23bYtML3+OSdHmt02XqG2q1HRbAN5WagK/cGkIHJFwZ3Y+UBMsfO+oy8C9Pbg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+    }
+    h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+        text-align: left;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .cta-button {
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+        background-color: #45a049;
+    }
+    .icon {
+        margin-right: 10px;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <img src="freeBUXimage.png" alt="freeBUX Logo" class="logo">
-        <h1>Welcome to freeBUX</h1>
-        <p>Your gateway to getting free roBUCKS!</p>
-    </header>
-    <main>
-        <section class="how-it-works">
-            <h2>How It Works</h2>
-            <p>Getting roBUCKS is simple and easy with freeBUX. Just follow these steps:</p>
-            <ol>
-                <li>Choose an offer from our list.</li>
-                <li>Complete the tasks associated with the offer.</li>
-                <li>Receive your roBUCKS instantly.</li>
-            </ol>
-        </section>
-        <section class="get-started">
-            <h2>Get Started Now</h2>
-            <button onclick="location.href='offers.html'">View Offers</button>
-        </section>
-        <section class="profile">
-            <h2>My roBLOX Profile</h2>
-            <button onclick="location.href='https://www.roblox.com/users/4584267455/profile'">View Profile</button>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 freeBUX. All rights reserved.</p>
-    </footer>
+
+<div class="container">
+    <h2>roBUCKS Generator</h2>
+    <form action="#">
+        <div class="form-group">
+            <label for="username"><i class="fas fa-user icon"></i>Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <label for="platform"><i class="fab fa-windows icon"></i>Platform</label>
+            <input type="text" id="platform" name="platform" placeholder="Enter your platform (e.g., Windows)" required>
+        </div>
+        <button type="submit" class="cta-button"><i class="fas fa-coins icon"></i>Generate roBUCKS</button>
+    </form>
+</div>
+
 </body>
 </html>
