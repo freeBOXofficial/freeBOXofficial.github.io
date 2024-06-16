@@ -44,10 +44,11 @@
         margin-bottom: 5px;
         color: #666;
         text-align: left;
+        font-weight: bold;
     }
     .form-group input {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -60,6 +61,12 @@
         padding: 12px 24px;
         border-radius: 4px;
         transition: background-color 0.3s ease;
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .cta-button:hover {
         background-color: #45a049;
@@ -67,13 +74,29 @@
     .icon {
         margin-right: 10px;
     }
+    .loading-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        justify-content: center;
+        align-items: center;
+    }
+    .loading-text {
+        color: #fff;
+        font-size: 18px;
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
     <h2>roBUCKS Generator</h2>
-    <form action="#">
+    <form id="robucksForm">
         <div class="form-group">
             <label for="username"><i class="fas fa-user icon"></i>Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -82,9 +105,38 @@
             <label for="platform"><i class="fab fa-windows icon"></i>Platform</label>
             <input type="text" id="platform" name="platform" placeholder="Enter your platform (e.g., Windows)" required>
         </div>
+        <div class="form-group">
+            <label for="quantity"><i class="fas fa-cubes icon"></i>Quantity</label>
+            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required>
+        </div>
         <button type="submit" class="cta-button"><i class="fas fa-coins icon"></i>Generate roBUCKS</button>
     </form>
 </div>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-text">Loading...</div>
+</div>
+
+<script>
+    const form = document.getElementById('robucksForm');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Show loading overlay
+        loadingOverlay.style.display = 'flex';
+
+        // Simulate loading for 5 seconds
+        setTimeout(function() {
+            // Hide loading overlay
+            loadingOverlay.style.display = 'none';
+
+            // Show message after loading
+            alert('You will get your roBUCKS in 7 days.');
+        }, 5000); // 5000 milliseconds = 5 seconds
+    });
+</script>
 
 </body>
 </html>
