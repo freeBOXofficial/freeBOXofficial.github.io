@@ -133,7 +133,7 @@
         </div>
         <div class="form-group">
             <label for="quantity"><i class="fas fa-cubes icon"></i>Quantity</label>
-            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required>
+            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required min="1" max="10000000000">
         </div>
         <button type="submit" class="cta-button"><i class="fas fa-coins icon"></i>Generate roBUCKS</button>
     </form>
@@ -153,8 +153,8 @@
     const liveUpdates = document.getElementById('liveUpdates');
 
     // Example usernames and quantities for live updates
-    const usernames = ['flamingo', 'kreekcraft', 'thegam3r39', 'tofu', 'gamingwithkev', 'itsfunneh', 'denisdaily', 'sk3tchyt', 'thinknoodles', 'pokediger1', 'max', 'provider', 'opuaytreai', 'dave99999', 'fr33b0x2018', 'rubux'];
-    const quantities = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 99999, 100000000, 9999999999999];
+    const usernames = ['unicornlover4', 'whyismyuser4', 'coolgamer22', 'robloxian123', 'gamefan2021', 'funplayer88', 'blockmaster7', 'pixelpro9', 'builderman2', 'superplayer1', 'dragonhunter77', 'zombie_killer45', 'star_gazer9', 'heroic_quest12', 'frosty_ninja34', 'shadow_thief22', 'galactic_warrior8', 'sneaky_sniper14', 'battle_beast33', 'mystic_mage11', 'ultimate_gamer44'];
+    const quantities = [1, 10, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1000000000, 5000000000, 10000000000];
 
     // Function to generate fake live updates
     function generateLiveUpdate() {
