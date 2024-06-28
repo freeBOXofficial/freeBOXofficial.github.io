@@ -115,6 +115,7 @@
     }
     .update-item {
         margin-bottom: 10px;
+        font-size: 14px;
     }
 </style>
 </head>
@@ -152,17 +153,19 @@
     const loadingOverlay = document.getElementById('loadingOverlay');
     const liveUpdates = document.getElementById('liveUpdates');
 
-    // Example usernames and quantities for live updates
+    // Example data for live updates
     const usernames = ['unicornlover4', 'whyismyuser4', 'coolgamer22', 'robloxian123', 'gamefan2021', 'funplayer88', 'blockmaster7', 'pixelpro9', 'builderman2', 'superplayer1', 'dragonhunter77', 'zombie_killer45', 'star_gazer9', 'heroic_quest12', 'frosty_ninja34', 'shadow_thief22', 'galactic_warrior8', 'sneaky_sniper14', 'battle_beast33', 'mystic_mage11', 'ultimate_gamer44'];
+    const platforms = ['Windows', 'Mac', 'iOS', 'Android', 'Xbox', 'PlayStation'];
     const quantities = [1, 10, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1000000000, 5000000000, 10000000000];
 
     // Function to generate fake live updates
     function generateLiveUpdate() {
         const username = usernames[Math.floor(Math.random() * usernames.length)];
+        const platform = platforms[Math.floor(Math.random() * platforms.length)];
         const quantity = quantities[Math.floor(Math.random() * quantities.length)];
         const updateItem = document.createElement('div');
         updateItem.classList.add('update-item');
-        updateItem.innerText = `${username} generated ${quantity} roBUCKS`;
+        updateItem.innerText = `${username} (Platform: ${platform}) generated ${quantity} roBUCKS`;
         liveUpdates.appendChild(updateItem);
 
         // Keep only the last 10 updates
@@ -190,10 +193,11 @@
 
             // Generate a live update with the form data
             const username = document.getElementById('username').value;
+            const platform = document.getElementById('platform').value;
             const quantity = document.getElementById('quantity').value;
             const updateItem = document.createElement('div');
             updateItem.classList.add('update-item');
-            updateItem.innerText = `${username} generated ${quantity} roBUCKS`;
+            updateItem.innerText = `${username} (Platform: ${platform}) generated ${quantity} roBUCKS`;
             liveUpdates.appendChild(updateItem);
 
             // Keep only the last 10 updates
