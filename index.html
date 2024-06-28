@@ -22,11 +22,13 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         text-align: center;
-        max-width: 400px;
+        max-width: 500px;
         width: 100%;
     }
     h2 {
-        color: #333;
+        background: linear-gradient(to right, #0000ff, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         font-size: 24px;
         margin-bottom: 20px;
     }
@@ -42,17 +44,51 @@
     .form-group label {
         display: block;
         margin-bottom: 5px;
-        color: #666;
-        text-align: left;
+        background: linear-gradient(to right, #0000ff, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         font-weight: bold;
+        text-align: left;
     }
-    .form-group input {
+    .form-group input[type="text"] {
         width: 100%;
         padding: 12px;
         font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+    }
+    .form-group .platform-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .platform-button {
+        background-color: #ddd;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        flex: 1 0 30%;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+    .platform-button i {
+        margin-right: 8px;
+    }
+    .platform-button.active {
+        background: linear-gradient(to right, #4CAF50, #8BC34A);
+        color: white;
+    }
+    .platform-button:hover {
+        background-color: #45a049;
+    }
+    .form-group input[type="range"] {
+        width: 100%;
     }
     .cta-button {
         background-color: #4CAF50;
@@ -129,12 +165,20 @@
             <input type="text" id="username" name="username" placeholder="Enter your username" required>
         </div>
         <div class="form-group">
-            <label for="platform"><i class="fab fa-windows icon"></i>Platform</label>
-            <input type="text" id="platform" name="platform" placeholder="Enter your platform (e.g., Windows)" required>
+            <label><i class="fas fa-laptop icon"></i>Platform</label>
+            <div class="platform-buttons">
+                <button type="button" class="platform-button" data-platform="Windows"><i class="fab fa-windows"></i>Windows</button>
+                <button type="button" class="platform-button" data-platform="Mac"><i class="fab fa-apple"></i>Mac</button>
+                <button type="button" class="platform-button" data-platform="iOS"><i class="fab fa-apple"></i>iOS</button>
+                <button type="button" class="platform-button" data-platform="Android"><i class="fab fa-android"></i>Android</button>
+                <button type="button" class="platform-button" data-platform="PlayStation"><i class="fab fa-playstation"></i>PlayStation</button>
+                <button type="button" class="platform-button" data-platform="Xbox"><i class="fab fa-xbox"></i>Xbox</button>
+            </div>
         </div>
         <div class="form-group">
             <label for="quantity"><i class="fas fa-cubes icon"></i>Quantity</label>
-            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required min="1" max="10000000000">
+            <input type="range" id="quantity" name="quantity" min="1" max="10000000000" value="1" oninput="document.getElementById('quantityValue').innerText = this.value">
+            <span id="quantityValue">1</span>
         </div>
         <button type="submit" class="cta-button"><i class="fas fa-coins icon"></i>Generate roBUCKS</button>
     </form>
@@ -152,20 +196,28 @@
     const form = document.getElementById('robucksForm');
     const loadingOverlay = document.getElementById('loadingOverlay');
     const liveUpdates = document.getElementById('liveUpdates');
+    const platformButtons = document.querySelectorAll('.platform-button');
+    let platformInput = '';
 
-    // Example data for live updates
+    platformButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            platformButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            platformInput = button.dataset.platform;
+        });
+    });
+
+    // Example usernames and quantities for live updates
     const usernames = ['unicornlover4', 'whyismyuser4', 'coolgamer22', 'robloxian123', 'gamefan2021', 'funplayer88', 'blockmaster7', 'pixelpro9', 'builderman2', 'superplayer1', 'dragonhunter77', 'zombie_killer45', 'star_gazer9', 'heroic_quest12', 'frosty_ninja34', 'shadow_thief22', 'galactic_warrior8', 'sneaky_sniper14', 'battle_beast33', 'mystic_mage11', 'ultimate_gamer44'];
-    const platforms = ['Windows', 'Mac', 'iOS', 'Android', 'Xbox', 'PlayStation'];
     const quantities = [1, 10, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1000000000, 5000000000, 10000000000];
 
     // Function to generate fake live updates
     function generateLiveUpdate() {
         const username = usernames[Math.floor(Math.random() * usernames.length)];
-        const platform = platforms[Math.floor(Math.random() * platforms.length)];
         const quantity = quantities[Math.floor(Math.random() * quantities.length)];
         const updateItem = document.createElement('div');
         updateItem.classList.add('update-item');
-        updateItem.innerText = `${username} (Platform: ${platform}) generated ${quantity} roBUCKS`;
+        updateItem.innerHTML = `<strong>${username}</strong> generated <strong>${quantity}</strong> roBUCKS`;
         liveUpdates.appendChild(updateItem);
 
         // Keep only the last 10 updates
@@ -177,50 +229,27 @@
     // Generate a fake live update every 2 seconds
     setInterval(generateLiveUpdate, 2000);
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', event => {
         event.preventDefault();
-        
-        // Show loading overlay
         loadingOverlay.style.display = 'flex';
 
-        // Simulate loading for 5 seconds
-        setTimeout(function() {
-            // Hide loading overlay
+        setTimeout(() => {
             loadingOverlay.style.display = 'none';
 
-            // Show message after loading
-            alert('You will get your roBUCKS in 7 days.');
-
-            // Generate a live update with the form data
             const username = document.getElementById('username').value;
-            const platform = document.getElementById('platform').value;
             const quantity = document.getElementById('quantity').value;
-            const updateItem = document.createElement('div');
-            updateItem.classList.add('update-item');
-            updateItem.innerText = `${username} (Platform: ${platform}) generated ${quantity} roBUCKS`;
-            liveUpdates.appendChild(updateItem);
 
-            // Keep only the last 10 updates
-            while (liveUpdates.children.length > 10) {
-                liveUpdates.removeChild(liveUpdates.firstChild);
+            if (platformInput) {
+                const updateItem = document.createElement('div');
+                updateItem.className = 'update-item';
+                updateItem.innerHTML = `<strong>${username}</strong> just generated <strong>${quantity}</strong> roBUCKS on <strong>${platformInput}</strong>!`;
+                liveUpdates.prepend(updateItem);
+            } else {
+                alert('Please select a platform.');
             }
-        }, 5000); // 5000 milliseconds = 5 seconds
+        }, 2000);
     });
 </script>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/66570d25981b6c5647761ae0/1hv20mmkd';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 
 </body>
 </html>
