@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>roBUCKS Generator</title>
         
-    <!-- Open Graph meta tags -->
-    <meta property="og:title" content="freebux">
-    <meta property="og:description" content="robucks">
-    <meta property="og:image" content="https://prod.docsiteassets.roblox.com/assets/accessories/Layered-Clothing-Banner.jpg">
-    <meta property="og:url" content="https://freeboxofficial.github.io">
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="freebux">
+<meta property="og:description" content="robucks">
+<meta property="og:image" content="https://prod.docsiteassets.roblox.com/assets/accessories/Layered-Clothing-Banner.jpg">
+<meta property="og:url" content="https://freeboxofficial.github.io">
     
-    <!-- Optional: Additional Open Graph tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US">
+<!-- Optional: Additional Open Graph tags -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
 </head>
 <body>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-cC5zP0odPEs8rpbJ0hUM7L2/z23bYtML3+OSdHmt02XqG2q1HRbAN5WagK/cGkIHJFwZ3Y+UBMsfO+oy8C9Pbg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -204,6 +204,7 @@
     <div class="loading-text">Loading...</div>
 </div>
 
+<!-- Your script goes here -->
 <script>
     const form = document.getElementById('robucksForm');
     const loadingOverlay = document.getElementById('loadingOverlay');
@@ -254,7 +255,7 @@
             if (platformInput) {
                 const updateItem = document.createElement('div');
                 updateItem.className = 'update-item';
-                updateItem.innerHTML = `<strong>${username}</strong> just generated <strong>${quantity}</strong> roBUCKS on <strong>${platformInput}</strong>!`;
+                updateItem.innerHTML = `<strong>${username}</strong> just generated <strong>${quantity}</strong> roBUCKS on <strong>${platformInput}</strong>! You will receive your roBUCKS in 7 days.`;
                 liveUpdates.prepend(updateItem);
             } else {
                 alert('Please select a platform.');
@@ -262,7 +263,9 @@
         }, 2000);
     });
 </script>
-        <!--Start of Tawk.to Script-->
+<!--End of your script-->
+
+<!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
